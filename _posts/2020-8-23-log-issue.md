@@ -26,7 +26,7 @@ https://github.com/go-chassis/go-chassis/issues/889
 openlogging.GetLogger().Debugf("shuffler %d %d", i, v)
 ```
 
-然而如果你这么去写，也是完全不会有问题的，可想而知，我们会丢失重要的日志信息，甚至无法定位生产环境问题
+然而如果你这么去写，也是完全不会有问题的，可想而知，我们会丢失重要的日志信息，甚至无法定位生产环境问题, f类函数本质上封装了fmt.Sprintf方便了开发，却躲过了IDE告警和静态检查
 ```go
 openlogging.GetLogger().Debugf("shuffler", i, v)
 ```
