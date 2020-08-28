@@ -33,7 +33,7 @@ openlogging.GetLogger().Debugf("shuffler", i, v)
 
 是的，最大的问题在于事后纠正，而不是事前预防，你可以任意的滥用format参数和后面的参数，而无论IDE，静态检查对此都无能为力，代码合入后，只能在运行时肉眼排查。
 
-我们再来看一个整改后的原形毕露……，不仔细看还真的看不出来“%s:%s%:s”这个事有问题的写法，应当是“%s:%s:%s”
+我们再来看一个整改后的原形毕露……，不仔细看还真的看不出来“%s:%s%:s”这个是有问题的写法，应当是“%s:%s:%s”
 ```go
 openlog.Error(fmt.Sprintf("can not close client %s:%s%:s, err [%s]", protocol, service, endpoint, err.Error()))
 ```
