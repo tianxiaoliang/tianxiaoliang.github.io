@@ -33,6 +33,13 @@ openlogging.GetLogger().Debugf("shuffler", i, v)
 
 是的，最大的问题在于事后纠正，而不是事前预防，你可以任意的滥用format参数和后面的参数，而无论IDE，静态检查对此都无能为力，代码合入后，只能在运行时肉眼排查。
 
+我们再来看一个整改后的原形毕露……
+```go
+openlog.Error(fmt.Sprintf("can not close client %s:%s%:s, err [%s]", protocol, service, endpoint, err.Error()))
+```
+把它放到IDE里，可以看到清晰地告警提示，然而你调用f类函数不会，关键日志信息就这么的丢掉了
+
+
 可以以下面的提交为例，我在重构过程中发现很多f类方法被滥用
 https://github.com/go-chassis/go-archaius/pull/121
 
